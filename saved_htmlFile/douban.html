@@ -1,0 +1,2825 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>重庆市网上税务局</title>
+    <link rel="stylesheet" href="/PortalWeb/styles/index/reset.css" />
+    <link rel="stylesheet" href="/PortalWeb/styles/index/style.css" />
+    <link href="/PortalWeb/lib/sui/themes/default/miniui.css" rel="stylesheet" />
+    <link href="/PortalWeb/lib/sui/themes/icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/PortalWeb/styles/override-miniui.css" />
+    <link rel="stylesheet" href="/PortalWeb/styles/cq-framework.css" />
+    <link rel="stylesheet" href="/PortalWeb/styles/common.css" />
+    <style>
+#modifyPassword .modify-password-form&gt;table tr {
+  height: 33px;
+  font-size: 14px;
+  color: #333;
+}
+
+#modifyPassword .modify-password-form&gt;table tr td:first-child{
+  color: #6c6c6c;
+}
+#wxtsText {
+	padding: 6px 0px 0px 0px;
+}
+
+.black_overlay {
+	display: none;
+	position: absolute;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity = 80);
+}
+
+.white_content {
+	display: none;
+	position: absolute;
+	top: 17.5%;
+	left: 5.5%;
+	width: 64%;
+	height: 15%;
+	border: 1px solid #e1e1e1;
+	background-color: #f9f9f9;
+	z-index: 1002;
+	overflow: auto;
+	font-family: "Microsoft YaHei";
+	font-size: 14px;
+}
+
+.black_overlay1 {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity = 80);
+}
+
+.white_content1 {
+	display: none;
+	position: absolute;
+	top: 5%;
+	left: 20%;
+	right: 17%;
+	bottom: 5%;
+	padding: 16px;
+	border: 5px solid gray;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
+h1{
+	text-align: center;
+	font-size: 16px;
+}
+p{
+	font-size: 14px;
+}
+
+ .white_content1,.black_overlay1 {
+    scrollbar-base-color: #C0C0C0; 
+    scrollbar-3dlight-color: #C0C0C0; 
+    scrollbar-highlight-color: #C0C0C0; 
+    scrollbar-track-color: #F0F0F0;
+    scrollbar-arrow-color: black; 
+    scrollbar-shadow-color: #C0C0C0;
+    scrollbar-dark-shadow-color: #C0C0C0;
+}
+.mask {      
+     position: absolute;
+     filter: alpha(opacity=60); background-color: black;     
+     z-index: 1003; left: 0px;
+     opacity:0.5; -moz-opacity:0.5;  
+     text-align: center;
+     top: 0%;  left: 0%;  width: 100%;  height: 100%;
+  }  
+.maskNotice{
+     position: absolute;
+   	 font-family: 微软雅黑;
+     text-align: center; /*设置文本水平居中*/   
+     width: 330px;
+     height: 140px;
+     border: 5px solid gray;   
+     top: 35%;
+     left: 36%;
+     background-color: white; 
+     z-index: 1004;
+  } 
+.spinner {
+  margin: 20px auto;
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 10px;
+}
+ 
+.spinner &gt; div {
+  background-color: #67CF22;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+   
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+ 
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+ 
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+ 
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+ 
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+.zxzx-btn {
+    color: #fff;
+	border: 0px;
+	height: 90px;
+	width: 90px;
+	position: fixed;
+	cursor: pointer;
+	right: 0px;
+	bottom: 8px;
+}
+#kfWindows {
+    display: none;
+    position: fixed;
+    width: 760px;
+    height: 580px;
+    bottom: 0;
+    right: 0;
+    z-index: 99999;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+} 
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+  20% { -webkit-transform: scaleY(1.0) }
+}
+ 
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+/**按钮:蓝底白字**/
+.btncx-blue {
+  color: #fff;
+  line-height: 30px;
+  text-decoration: none;
+  background: #37bcf7;
+  /*padding: 0px 15px;*/
+  /* margin: 0px 5px; */
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  /*font-weight: bolder;*/
+  font-size: 15px;
+  border-radius: 4px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  width: 80px; height: 30px;
+  margin-top: -4px; 
+}
+</style>
+<link rel="stylesheet" href="http://12366.cqsw.gov.cn/PortalWeb/scripts/layer/skin/layer.css" id="layui_layer_skinlayercss" style="" /></head>
+<body>
+<input id="btn_indexCustom" onclick="customMenu();" value="我要定制" style="display:none" />
+<div id="mask" class="mask" style="display: none;"></div> 
+<div class="maskNotice" id="maskNotice" style="display: none;">
+  <div style="margin-top:20px;"><font id="loginNotice" style="font-size:18px;">正在加载您的功能菜单，请等待！</font></div>
+	<div class="spinner">
+	  <div class="rect1"></div>
+	  <div class="rect2"></div>
+	  <div class="rect3"></div>
+	  <div class="rect4"></div>
+	  <div class="rect5"></div>
+	</div>
+</div> 
+
+<div id="closebody" class="close-body hidden" onmousedown="Form.MoveWindow();" style="height: 32px;" khd="false">
+    <div style="float: left;width: 120px;height: 100%;line-height: 2em"></div>
+
+    <div style="float: right;width: 40px;height: 100%">
+        <div style="width: 40px;height: 30px;" class="body-close" onclick="Form.Close()" title="关闭"></div>
+    </div>
+    <div style="float: right;width: 40px;height: 100%">
+        <div style="" class="body-max" onclick="Form.Max()" title="放大"></div>
+    </div>
+    <div style="float: right;width: 40px;height: 100%">
+        <div style="" class="body-sx" onclick="Form.Min()" title="缩小"></div>
+    </div>
+    <div style="float: right;width: 40px;height: 100%">
+        <div style="" class="body-refresh" onclick="refresh()" title="刷新"></div>
+    </div>
+</div>
+
+
+<div class="header">
+    <div class="header-contain clearfloat">
+        <div class="header-left">
+            <img src="/PortalWeb/images/ico-gav.png?0.15025225638457296" id="ico-gav" alt="" />
+            <span class="phone">咨询热线：023-88812366-1</span>
+            <span class="phone">CA证书服务热线：4000235888</span>
+            <!-- <span class="phone"><a href="javascript:showYxsImage();"><img src="/PortalWeb/images/zxzx.png" alt="">智能咨询</a></span> -->
+        </div>
+        <div class="header-right" id="head_right_home">
+            <!-- <a href="" class="task">代办任务&nbsp;&nbsp;<span class="wait-task">11</span></a> -->
+            <a href="/api/yhgl/index" class="back"><img src="/PortalWeb/images/ico-home.png" alt="" /> 返回首页</a>
+        </div>
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-contain clearfloat">
+        <div class="nav-left">
+            <img src="/PortalWeb/images/ico-user.png" alt="" /><span id="welcomeNotice" garzstate="" title="重庆燕红财务咨询有限公司[渝中区税务局]，欢迎您！">重庆燕红财务咨询有限公司[渝中区税务局]，欢迎您！</span>
+            <div style="float: right; margin-top:20px" id="divarrow">
+                <a href="javascript:showarrow()"><img src="/PortalWeb/images/arrow_down.png" id="arrow" style="display: block;" /></a>
+            </div>
+        </div>
+        <div class="nav-middle">
+            <img src="/PortalWeb/images/ico-date.png" alt="" /> 本月征期截止至<span id="cut-date">2018-10-24</span>
+        </div>
+        <div class="nav-right">
+            <img src="/PortalWeb/images/ico-operate.png" alt="" /> <!-- <a href="javascript:openDsywbl();">【业务办理】</a>&nbsp; -->
+            <a href="javascript:" id="btnCaSign">【<input type="checkbox" id="cbxCaSign" disabled="disabled" /> 使用CA证书签名】</a> 
+            <a href="javascript:switchTaxpayer()" id="switchTaxpayer" style="display: inline;">【身份切换】</a> 
+            <a href="/PortalWeb/pages/zxbz/help.html" target="_blank">【在线帮助】</a> 
+            <a href="javascript:logout()">【退出】</a>
+            <a href="javascript:refresh()" class="back" id="back_home" style="display:none"><img src="/PortalWeb/images/ico-home.png" id="back_img" /> 返回首页</a>
+        </div>
+    </div>
+</div>
+
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay">
+</div>
+<div id="MyDiv" class="white_content" style="overflow:hidden;margin-top:-20px;" onclick="mydivclick()">
+    <div id="wxtsText">
+        <table>
+            <tbody><tr>
+                <td width="15%" style="text-align:right;"><font color="#707070">纳税人名称：</font></td>
+                <td style="width: 400px;"><span id="gs_nsrmc">重庆燕红财务咨询有限公司</span></td>
+                <td width="15%" style="text-align:right;"><font color="#707070">纳税人识别号：</font></td>
+                <td style="width: 180px;"><span id="gs_nsrsbh">915001030517473829</span></td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align:right;"><font color="#707070">主管税务机关：</font></td>
+                <td style="width: 400px;"><span id="gs_zgswjg">渝中区税务局</span></td>
+                <td width="15%" style="text-align:right;"><font color="#707070">主管税务人员：</font></td>
+                <td style="width: 180px;"><span id="gs_zgswry">况勇</span></td>
+            </tr>
+            <!-- <tr>
+              <td width="15%" style="text-align:right;"><font color="#707070">纳税主管科室:</font></td>
+              <td style="width: 400px;"><span id="gs_zgswks"></span></td>
+            </tr> -->
+        </tbody></table>
+    </div>
+
+</div>
+
+<div class="main clearfloat">
+    <div id="left-contain">
+        <div class="search">
+            <input placeholder="搜索" id="nav_filter_input" onkeyup="nav_filter_input_valuechange();" />
+            <img class="search_nav" src="/PortalWeb/images/ico-search.png" />
+        </div>
+        <ul class="main-left">
+            <li class="menu1">
+                <p class="menu1-p borderTop">
+                    用户管理
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/taxpayerInfoMaintain/userInfoMaintain.html" title="个人信息维护" data-isnewopen="N" data-id="100100">个人信息维护</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/taxpayerInfoMaintain/taxpayerInfoMaintain.html" title="纳税人信息维护" data-isnewopen="N" data-id="100101">纳税人信息维护</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/corporateBind/corporateBind.html" title="绑定企业" data-isnewopen="N" data-id="100102">绑定企业</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/addAgency/agencyBind.html" title="代理机构绑定" data-isnewopen="N" data-id="100103">代理机构绑定</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/addAgency/taxpayerManager.html" title="办税人员管理" data-isnewopen="N" data-id="100104">办税人员管理</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/modifyPassword/modifyPassword.html" title="修改密码" data-isnewopen="N" data-id="100107">修改密码</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="用户中心" data-isnewopen="N" data-id="100109">用户中心</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/taxpayerInfoMaintain/userAgreement.html" title="用户协议" data-isnewopen="N" data-id="100109001">用户协议</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/taxpayerInfoMaintain/noticeHistory.html" title="升级说明" data-isnewopen="N" data-id="100109002">升级说明</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/taxpayerInfoMaintain/userBzds.html" title="表证单书" data-isnewopen="Y" data-id="100109003">表证单书</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000262" title="我的标签" data-isnewopen="Y" data-id="100117">我的标签</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000247" title="电子资料" data-isnewopen="Y" data-id="100118">电子资料</a>
+						
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    办税服务
+                    <span class="menu-icon1-spread1"></span>
+                    <span class="menu-icon1-spread2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="税务报告" data-isnewopen="N" data-id="200001">税务报告</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001013&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="&quot;一照一码&quot;信息变更" data-isnewopen="Y" data-id="200001002">"一照一码"信息变更</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001012&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="存款账户账号报告" data-isnewopen="Y" data-id="200001003">存款账户账号报告</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001016&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="财务会计制度及核算备案" data-isnewopen="Y" data-id="200001004">财务会计制度及核算备案</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001029&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="授权（委托）划缴协议（网签三方协议）" data-isnewopen="Y" data-id="200001005">授权（委托）划缴协议（网签三方协议）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001026&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="纳税人分立合并报告" data-isnewopen="Y" data-id="200001006">纳税人分立合并报告</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001040&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="注销登记" data-isnewopen="Y" data-id="200001009">注销登记</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000048" title="房产税税源信息采集" data-isnewopen="Y" data-id="200001011">房产税税源信息采集</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000051" title="城镇土地使用税税源信息采集" data-isnewopen="Y" data-id="200001012">城镇土地使用税税源信息采集</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000052" title="车船税税源信息采集" data-isnewopen="Y" data-id="200001013">车船税税源信息采集</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000159" title="环境保护税基础信息采集" data-isnewopen="Y" data-id="200001014">环境保护税基础信息采集</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/yhkh/ykh.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="单位银行结算账户开具申请(测试)" data-isnewopen="N" data-id="200001015">单位银行结算账户开具申请(测试)</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001049&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="未按期申报抵扣增值税扣税凭证抵扣管理" data-isnewopen="Y" data-id="200001016">未按期申报抵扣增值税扣税凭证抵扣管理</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001053&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="文化事业建设费缴费信息报告" data-isnewopen="Y" data-id="200001017">文化事业建设费缴费信息报告</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001024&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="选择按小规模纳税人纳税" data-isnewopen="Y" data-id="200001018">选择按小规模纳税人纳税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001061&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="税务证件遗失、损毁管理" data-isnewopen="Y" data-id="200001019">税务证件遗失、损毁管理</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000243" title="企业所得税清算报备" data-isnewopen="Y" data-id="200001020">企业所得税清算报备</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001046&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="增值税进项税额扣除标准核定申请" data-isnewopen="Y" data-id="200001021">增值税进项税额扣除标准核定申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001062&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="货物运输业小规模纳税人异地代开增值税专用发票备案" data-isnewopen="Y" data-id="200001022">货物运输业小规模纳税人异地代开增值税专用发票备案</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001065&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="税务证件增补发" data-isnewopen="Y" data-id="200001023">税务证件增补发</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000266" title="企业所得税汇总纳税总分机构信息备案" data-isnewopen="Y" data-id="200001024">企业所得税汇总纳税总分机构信息备案</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="税务认定" data-isnewopen="N" data-id="200002">税务认定</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001024&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="选择按小规模纳税人纳税" data-isnewopen="Y" data-id="200002002">选择按小规模纳税人纳税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100000999&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="增值税一般纳税人资格登记" data-isnewopen="Y" data-id="200002003">增值税一般纳税人资格登记</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="发票办理" data-isnewopen="N" data-id="200003">发票办理</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=WBLoginCtrl_openWin&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="发票办理" data-isnewopen="Y" data-id="200003001">发票办理</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="https://fpdk.cqsw.gov.cn/?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="发票认证" data-isnewopen="Y" data-id="200003002">发票认证</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001027&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="丢失增值税专用发票已报税证" data-isnewopen="Y" data-id="200003003">丢失增值税专用发票已报税证</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="申报纳税" data-isnewopen="N" data-id="200004">申报纳税</a>
+						
+                        
+                        <span class="menu-icon2-retract"></span>
+                        <ul>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="http://cqxgm.cqsw.gov.cn:7005/WLSB/TTAX_FirstPage.html?Mode=2&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="增值税小规模纳税人申报" data-isnewopen="N" data-id="200004002" class="filter">增值税小规模纳税人申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/PortalWeb/pages/ds/qysdsIndex.html?1=1&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="企业所得税申报" data-isnewopen="N" data-id="200004003">企业所得税申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000089" title="附加税申报" data-isnewopen="Y" data-id="200004004">附加税申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/PortalWeb/pages/ds/jjgfIndex.html?1=1&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="基金规费申报" data-isnewopen="N" data-id="200004005">基金规费申报</a>
+									
+								
+								<!--
+                                
+                                <span class="menu-icon2-retract"></span>
+                                <ul>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000001" title="基金规费通用申报"
+                                           data-isnewopen="Y" data-id="200004005001" >基金规费通用申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000004" title="残保金申报"
+                                           data-isnewopen="Y" data-id="200004005002" >残保金申报</a>
+                                    </li>
+                                    
+                                </ul>
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/PortalWeb/pages/ds/ccxwsIndex.html?1=1&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="财产行为税申报" data-isnewopen="N" data-id="200004006">财产行为税申报</a>
+									
+								
+								<!--
+                                
+                                <span class="menu-icon2-retract"></span>
+                                <ul>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000017" title="城镇土地使用税申报"
+                                           data-isnewopen="Y" data-id="200004006003" >城镇土地使用税申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000018" title="房产税申报"
+                                           data-isnewopen="Y" data-id="200004006004" >房产税申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000045" title="车船税申报"
+                                           data-isnewopen="Y" data-id="200004006005" >车船税申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000094" title="印花税申报"
+                                           data-isnewopen="Y" data-id="200004006006" >印花税申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000092" title="烟叶税申报"
+                                           data-isnewopen="Y" data-id="200004006007" >烟叶税申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000088" title="耕地占用税申报"
+                                           data-isnewopen="Y" data-id="200004006008" >耕地占用税申报</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000090" title="土地增值税纳税申报表（一）（从事房地产开发的纳税人预征适用）"
+                                           data-isnewopen="Y" data-id="200004006009" >土地增值税纳税申报表（一）（从事房地产开发的纳税人预征适用）</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000091" title="土地增值税纳税申报表（三）（非从事房地产开发的纳税人适用）"
+                                           data-isnewopen="Y" data-id="200004006010" >土地增值税纳税申报表（三）（非从事房地产开发的纳税人适用）</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000087" title="资源税申报2016版"
+                                           data-isnewopen="Y" data-id="200004006011" >资源税申报2016版</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000157" title="环境保护税纳税申报表（A表）"
+                                           data-isnewopen="Y" data-id="200004006012" >环境保护税纳税申报表（A表）</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000158" title="环境保护税纳税申报表（B表）"
+                                           data-isnewopen="Y" data-id="200004006013" >环境保护税纳税申报表（B表）</a>
+                                    </li>
+                                    
+                                </ul>
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000025" title="扣费款（社保费）" data-isnewopen="Y" data-id="200004008">扣费款（社保费）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000023" title="财务报表报送" data-isnewopen="Y" data-id="200004009">财务报表报送</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/PortalWeb/pages/ds/gzzfIndex.html?1=1&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="更正作废申报表" data-isnewopen="N" data-id="200004010">更正作废申报表</a>
+									
+								
+								<!--
+                                
+                                <span class="menu-icon2-retract"></span>
+                                <ul>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000021" title="作废申报表"
+                                           data-isnewopen="Y" data-id="200004010001" >作废申报表</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000172" title="申报错误更正"
+                                           data-isnewopen="Y" data-id="200004010002" >申报错误更正</a>
+                                    </li>
+                                    
+                                </ul>
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/PortalWeb/pages/ds/cxdyIndex.html?1=1&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="申报信息查询及打印" data-isnewopen="N" data-id="200004011">申报信息查询及打印</a>
+									
+								
+								<!--
+                                
+                                <span class="menu-icon2-retract"></span>
+                                <ul>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000020" title="申报信息查询及打印"
+                                           data-isnewopen="Y" data-id="200004011001" >申报信息查询及打印</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000019" title="扣缴个人所得税报告表打印"
+                                           data-isnewopen="Y" data-id="200004011002" >扣缴个人所得税报告表打印</a>
+                                    </li>
+                                    
+                                    <li class="menu4">
+                                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000100" title="政策风险提示扫描结果"
+                                           data-isnewopen="Y" data-id="200004011003" >政策风险提示扫描结果</a>
+                                    </li>
+                                    
+                                </ul>
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="http://ypt.cqsw.gov.cn:7012/irpt/oemlogin.do?grpName=ZDSYWSZB2017&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="重点税源直报" data-isnewopen="Y" data-id="200004012">重点税源直报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001022&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="车辆购置税申报" data-isnewopen="Y" data-id="200004014">车辆购置税申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="http://ckts.cqsw.gov.cn:8001/cqjsso/login/cqAction.do?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="出口退税申报" data-isnewopen="Y" data-id="200004015">出口退税申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000242" title="委托代征报告" data-isnewopen="Y" data-id="200004017">委托代征报告</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001063&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="航空运输企业年度清算申报" data-isnewopen="Y" data-id="200004018">航空运输企业年度清算申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001059&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="原油天然气增值税申报" data-isnewopen="Y" data-id="200004019">原油天然气增值税申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="证明办理" data-isnewopen="N" data-id="200006">证明办理</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001032&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="税收完税证明（文书式）开具" data-isnewopen="Y" data-id="200006001">税收完税证明（文书式）开具</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000161" title="税收完税证明（其他税费）开具" data-isnewopen="Y" data-id="200006004">税收完税证明（其他税费）开具</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000162" title="税收完税证明下载" data-isnewopen="Y" data-id="200006005">税收完税证明下载</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001028&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="电子缴款凭证开具" data-isnewopen="Y" data-id="200006006">电子缴款凭证开具</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001020&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="车购税证明补发" data-isnewopen="Y" data-id="200006007">车购税证明补发</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001021&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="车购税证明更正" data-isnewopen="Y" data-id="200006008">车购税证明更正</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001025&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="中国税收居民身份证明" data-isnewopen="Y" data-id="200006009">中国税收居民身份证明</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001050&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="非居民企业汇总申报企业所得税证明" data-isnewopen="Y" data-id="200006010">非居民企业汇总申报企业所得税证明</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="优惠办理" data-isnewopen="N" data-id="200008">优惠办理</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://183.230.11.46:107/sword?ctrl=WBLoginCtrl_openWin&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="税收减免优惠" data-isnewopen="Y" data-id="200008001">税收减免优惠</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000027" title="我的申请" data-isnewopen="Y" data-id="200008002">我的申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="行政许可" data-isnewopen="N" data-id="200009">行政许可</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100000086&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="专票最高开票限额" data-isnewopen="Y" data-id="200009000">专票最高开票限额</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001034&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="企业印制发票申请" data-isnewopen="Y" data-id="200009001">企业印制发票申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001036&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="延期缴纳税款申请" data-isnewopen="Y" data-id="200009002">延期缴纳税款申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001037&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="延期申报申请" data-isnewopen="Y" data-id="200009003">延期申报申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001035&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="变更定期定额的申请" data-isnewopen="Y" data-id="200009004">变更定期定额的申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001038&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="非居民企业选择主要机构场所缴纳企业所得税" data-isnewopen="Y" data-id="200009005">非居民企业选择主要机构场所缴纳企业所得税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001039&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="采取实际利润以外方式预缴企业所得税" data-isnewopen="Y" data-id="200009006">采取实际利润以外方式预缴企业所得税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="预约办税" data-isnewopen="N" data-id="200117">预约办税</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/yybs/wyyy.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="我要预约" data-isnewopen="Y" data-id="200117001">我要预约</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/wsyy/wsyyHistory.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="我的预约" data-isnewopen="N" data-id="200117002">我的预约</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000264" title="办理预约" data-isnewopen="Y" data-id="200117003">办理预约</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="申报辅助信息报告" data-isnewopen="Y" data-id="200118">申报辅助信息报告</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000257" title="特别纳税调整相关资料" data-isnewopen="Y" data-id="200118001">特别纳税调整相关资料</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2">
+					
+						
+                        <a data-href="" title="退抵税办理" data-isnewopen="Y" data-id="200119">退抵税办理</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001056&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="入库减免退抵税" data-isnewopen="Y" data-id="200119001">入库减免退抵税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001055&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="汇算清缴结算多缴退抵税" data-isnewopen="Y" data-id="200119002">汇算清缴结算多缴退抵税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001057&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="误收多缴退抵税" data-isnewopen="Y" data-id="200119003">误收多缴退抵税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001069&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="不予加收滞纳金审批" data-isnewopen="Y" data-id="200119004">不予加收滞纳金审批</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001023&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="石脑油、燃料油消费税退税" data-isnewopen="Y" data-id="200119005">石脑油、燃料油消费税退税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001051&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="增值税期末留抵税额退税" data-isnewopen="Y" data-id="200119006">增值税期末留抵税额退税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000255" title="车船税退税" data-isnewopen="Y" data-id="200119007">车船税退税</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p borderTop">
+                    互动中心
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="消息定制" data-isnewopen="N" data-id="202001">消息定制</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/PortalWeb/pages/xxzx/queryXx.html" title="我的消息" data-isnewopen="Y" data-id="202001003">我的消息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    特色业务
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="新手任务" data-isnewopen="N" data-id="500002">新手任务</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001012&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="存款账户账号报告" data-isnewopen="Y" data-id="500002002">存款账户账号报告</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001016&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="财务会计制度及核算备案" data-isnewopen="Y" data-id="500002003">财务会计制度及核算备案</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001029&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="授权（委托）划缴协议（网签三方协议）" data-isnewopen="Y" data-id="500002004">授权（委托）划缴协议（网签三方协议）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100000999&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="增值税纳税人类型选择" data-isnewopen="Y" data-id="500002005">增值税纳税人类型选择</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001017&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="发票票种核定" data-isnewopen="Y" data-id="500002006">发票票种核定</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100000086&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="专票最高开票限额" data-isnewopen="Y" data-id="500002007">专票最高开票限额</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001030&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="税控设备申请" data-isnewopen="Y" data-id="500002008">税控设备申请</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001031&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="发票领用" data-isnewopen="Y" data-id="500002009">发票领用</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=WBLoginCtrl_openWinForTest&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="跨区域涉税事项办理" data-isnewopen="Y" data-id="500003">跨区域涉税事项办理</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="车购税业务" data-isnewopen="N" data-id="500004">车购税业务</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001022&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="车辆购置税申报" data-isnewopen="Y" data-id="500004001">车辆购置税申报</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001020&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="车购税证明补发" data-isnewopen="Y" data-id="500004002">车购税证明补发</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://etaxfp.cqsw.gov.cn:160/sword?ctrl=SyLoginCtrl_ssoLogin&amp;xtgnDm=F251000100001021&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="车购税证明更正" data-isnewopen="Y" data-id="500004003">车购税证明更正</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    宣传辅导
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="http://crm2.qq.com/page/portalpage/wpa.php?uin=8002312366&amp;cref=http://12366.cqsw.gov.cn:8080&amp;ref=&amp;pt=&amp;f=1&amp;ty=1&amp;ap=&amp;as=&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="办税咨询" data-isnewopen="Y" data-id="600001">办税咨询</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="http://www.cqsw.gov.cn/cqsswj/nsfw/bszn/xxbg/jcxxbg/?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="办税指南" data-isnewopen="Y" data-id="600002">办税指南</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="http://www.cqsw.gov.cn/cqsswj/sszc/zcsd/?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="政策法规" data-isnewopen="Y" data-id="600003">政策法规</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="http://12366.cqsw.gov.cn:5003/pub/map?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="大厅实况" data-isnewopen="Y" data-id="600006">大厅实况</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="http://www.cqsw.gov.cn/cqsswj/hdjl/rdwt/zzs/?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="热点问题" data-isnewopen="Y" data-id="600007">热点问题</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000201" title="纳税人满意度调查" data-isnewopen="Y" data-id="600008">纳税人满意度调查</a>
+						
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    权益维护
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/tsjb/index.html?model=jzxx&amp;bz=new" title="局长信箱" data-isnewopen="Y" data-id="700001">局长信箱</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/tsjb/index.html?model=yjzj&amp;bz=new" title="意见征集" data-isnewopen="Y" data-id="700002">意见征集</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/tsjb/index.html?model=sswfjj&amp;bz=new" title="税收违法行为检举" data-isnewopen="Y" data-id="700003">税收违法行为检举</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/tsjb/index.html?model=gbwjjj&amp;bz=new" title="税务干部违纪检举" data-isnewopen="Y" data-id="700004">税务干部违纪检举</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/PortalWeb/pages/tsjb/index.html?model=tsjy&amp;bz=new" title="投诉建议" data-isnewopen="Y" data-id="700005">投诉建议</a>
+						
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000256" title="办税评价" data-isnewopen="Y" data-id="700006">办税评价</a>
+						
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    信用管理
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="银税互动" data-isnewopen="N" data-id="800001">银税互动</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/syhd/syhd.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="银税互动贷款（企业）" data-isnewopen="Y" data-id="800001001">银税互动贷款（企业）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/syhd/cx_syhd.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="我的授权（企业）" data-isnewopen="Y" data-id="800001002">我的授权（企业）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    涉税查询
+                    <span class="menu-icon1-retract1"></span>
+                    <span class="menu-icon1-retract2"></span>
+                </p>
+                
+                <ul>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="公共查询" data-isnewopen="N" data-id="900001">公共查询</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/cx_fplx.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="发票流向" data-isnewopen="Y" data-id="900001001">发票流向</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/cx_fpmx.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="发票信息" data-isnewopen="Y" data-id="900001002">发票信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/cx_nsrzt.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="纳税人状态" data-isnewopen="Y" data-id="900001003">纳税人状态</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/cx_qsqy.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="欠税状态" data-isnewopen="Y" data-id="900001004">欠税状态</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/cx_xydjcx.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="信用等级" data-isnewopen="Y" data-id="900001005">信用等级</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/nsrxydjcx/nsrxydjcxView.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="信用等级A类纳税人查询" data-isnewopen="Y" data-id="900001006">信用等级A类纳税人查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/qywh/zdwfajcx.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="重大税收违法案件查询" data-isnewopen="Y" data-id="900001007">重大税收违法案件查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                    <li class="menu2 showOrHide">
+					
+						
+                        <a data-href="" title="我的查询" data-isnewopen="N" data-id="900002">我的查询</a>
+						
+                        
+                        <span class="menu-icon2-spread"></span>
+                        <ul>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000029" title="纳税人基本信息" data-isnewopen="Y" data-id="900002001">纳税人基本信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000030" title="税费种认定信息查询" data-isnewopen="Y" data-id="900002004">税费种认定信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000033" title="投资方信息查询" data-isnewopen="Y" data-id="900002005">投资方信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000034" title="存款账号" data-isnewopen="Y" data-id="900002007">存款账号</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000085" title="个税代扣代缴申报明细查询" data-isnewopen="Y" data-id="900002008">个税代扣代缴申报明细查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000086" title="申报开票入库明细查询" data-isnewopen="Y" data-id="900002009">申报开票入库明细查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000035" title="变更登记" data-isnewopen="Y" data-id="900002010">变更登记</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000081" title="财务报表查询" data-isnewopen="Y" data-id="900002011">财务报表查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000036" title="停复业" data-isnewopen="Y" data-id="900002012">停复业</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000037" title="开发项目登记" data-isnewopen="Y" data-id="900002014">开发项目登记</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000038" title="建安项目登记" data-isnewopen="Y" data-id="900002015">建安项目登记</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000039" title="财务制度备案" data-isnewopen="Y" data-id="900002016">财务制度备案</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000082" title="房屋信息（单位）" data-isnewopen="Y" data-id="900002020">房屋信息（单位）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000083" title="土地信息（单位）" data-isnewopen="Y" data-id="900002021">土地信息（单位）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000084" title="车辆信息（单位）" data-isnewopen="Y" data-id="900002022">车辆信息（单位）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000065" title="社保费欠税信息查询" data-isnewopen="Y" data-id="900002023">社保费欠税信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000073" title="纳税人信用等级查询" data-isnewopen="Y" data-id="900002024">纳税人信用等级查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000097" title="延期纳税信息" data-isnewopen="Y" data-id="900002025">延期纳税信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="http://12366.cqsw.gov.cn/PortalWeb/pages/sscx/wszmcx.html?nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=" title="税收完税证明查验（文书式）" data-isnewopen="Y" data-id="900002027">税收完税证明查验（文书式）</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000241" title="环保税A表申报查询及导出" data-isnewopen="Y" data-id="900002028">环保税A表申报查询及导出</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000096" title="定期定额核定信息" data-isnewopen="Y" data-id="900002029">定期定额核定信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000073" title="纳税人信用状态查询" data-isnewopen="Y" data-id="900002030">纳税人信用状态查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000281" title="资格信息查询" data-isnewopen="Y" data-id="900002031">资格信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000253" title="完税证明查询" data-isnewopen="Y" data-id="900002032">完税证明查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000254" title="违法违章信息查询" data-isnewopen="Y" data-id="900002033">违法违章信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000267" title="企业所得税核定信息" data-isnewopen="Y" data-id="900002034">企业所得税核定信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000279" title="个人所得税核定信息" data-isnewopen="Y" data-id="900002035">个人所得税核定信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000278" title="票种核定信息" data-isnewopen="Y" data-id="900002036">票种核定信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000268" title="印花税核定信息" data-isnewopen="Y" data-id="900002037">印花税核定信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000269" title="其他税种核定信息" data-isnewopen="Y" data-id="900002038">其他税种核定信息</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000252" title="优惠信息查询" data-isnewopen="Y" data-id="900002039">优惠信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000251" title="欠税信息查询" data-isnewopen="Y" data-id="900002040">欠税信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                            <li class="menu3 showOrHide">
+								
+									
+                                		<a data-href="/api/yhgl/openDsMenu?mkdm=F251000100000274" title="涉税中介机构信息查询" data-isnewopen="Y" data-id="900002041">涉税中介机构信息查询</a>
+									
+								
+								<!--
+                                
+								-->
+                            </li>
+                            
+                        </ul>
+                        
+					
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu1">
+                <p class="menu1-p">
+                    搜索结果
+                    <span class="menu-icon1-spread1"></span>
+                    <span class="menu-icon1-spread2"></span>
+                </p>
+                
+            </li>
+            </ul>
+        <ul id="search-result"></ul>
+    </div>
+    <div class="main-right">
+        <iframe id="mainframe" frameborder="0" name="main" style="width: 920px; height: 1038px;" border="0" src="http://cqxgm.cqsw.gov.cn:7005/WLSB/TTAX_FirstPage.html?Mode=2&amp;nsrToken=fa8f69d6760d47ee8b5bbedb94c098c0&amp;wgzbh=&amp;roleid=5" height="900px" width="919px">
+
+        </iframe>
+    </div>
+</div>
+
+
+<!--办税身份选择 -->
+<div class="mini-panel mini-window" id="editWindow" style="border-width: 0px; padding: 0px; width: 800px; display: none;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">办税身份选择</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div class="switch-taxpayer">
+        <p>请选择身份</p>
+        <div id="search" style="display: none;">
+            <input id="key" onkeyup="keyValueChange()" placeholder="请输入关键字" style="margin-top: 5px;margin-left: 25px;width: 300px;font-family: 微软雅黑;height: 30px;line-height: 30px;&#10;&#9;&#9;&#9;&#9;font-size: 14px;color: #333;" />
+            <img alt="" src="/PortalWeb/images/search.png" style="height: 28px;line-height: 28px;margin-top: 4px;position: relative;left: -38px;" />
+        </div>
+        <ul id="taxpayerListInfo" onselectstart="return false">
+        </ul>
+        <div class="btn-blue" onclick="enterTaxpayerIdentity()">点击进入</div>
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+
+<div class="mini-panel mini-window" id="noticeWindow" style="border-width: 0px; padding: 0px; width: 600px; height: 285px; z-index: 1000; position: absolute; left: 208.5px; top: 137.5px; display: none;"><div class="mini-panel-border"><div class="mini-panel-header" style="width: auto;"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">系统消息（1/1）</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport" style="height: 253px;"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body" style="height: 243px;">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:18px;font-weight:normal;text-align:center;width:100%;"></div>
+    <div id="wznr" style="font-size:10px;line-height:30px;margin-top: 20px;text-align: left;margin-right: 20px;margin-left: 20px;">
+        <div style="text-indent: 2em;" id="noticeContent"><div><div style="width:525px;heihgt:100px;margin-top:30px"> <div style="float:left;width:80px;text-align:center;">    <img style="margin-left: -20px;" width="75px" src="/PortalWeb/images/clientLogin/weixinQRCode.png" /><p style="font-size:12px;display:block;margin-left: -20px;margin-top: -6px;">[微信扫一扫]</p></div> <div style="line-height:18px;float:right;width:435px;margin-left:10px;font-size:11px;text-align:justify;"><p style="text-indent:24px;margin-top: 2px;font-size:14px">您未关注网上税务局微信服务号，请完善你的相关资料，获得您在网上税务局涉税业务办理最新信息。</p><p style="text-indent:24px;font-size:14px">扫描“重庆市网上税务局”微信公众号，进入【网上税局】，选择【信息订制】并识别图中二维码，接收涉税资讯、办理进度等信息。涉税资讯一机在手，网上办税如影随行！</p></div></div></div></div>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input id="closeWid" onclick="closeNoticeWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;" value="确定" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger" style="display: none;"></div></div></div></div>
+
+<div class="mini-panel mini-window" id="YxcjWindow" style="border-width: 0px; padding: 0px; width: 500px; display: none; height: 150px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">消息提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: left;width:100%;">
+       <p style="font-size:16px;">      您的实名注册信息不完整，现在补充完整？
+       <!-- <a href='javascript:closeYxcjWind()' target='_blank' style="text-decoration:underline;color:#666;font-family:微软雅黑;font-size:16px;">下次补充</a>，   -->
+       <!-- <a href='javascript:openYxcjWind()' target='_blank' style="text-decoration:underline;color:#0066FF;font-family:微软雅黑;font-size:16px;">立即补充</a>。  -->
+       </p>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input onclick="closeYxcjWind()" type="button" style="width: 80px;height: 30px;background-color: #EFEFEF;margin-right: 15px;" value="下次补充" />
+                                                                                                   <input onclick="openYxcjWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;margin-left: 15px;" value="立即补充" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+<div class="mini-panel mini-window" id="GssjYxcjWindow" style="border-width: 0px; padding: 0px; width: 500px; display: none; height: 150px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">消息提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: left;width:100%;">
+       <p style="font-size:16px;">      未采集人像信息，不能进行业务办理，现在补充？
+       <!-- <a href='javascript:closeYxcjWind()' target='_blank' style="text-decoration:underline;color:#666;font-family:微软雅黑;font-size:16px;">下次补充</a>，   -->
+       <!-- <a href='javascript:openYxcjWind()' target='_blank' style="text-decoration:underline;color:#0066FF;font-family:微软雅黑;font-size:16px;">立即补充</a>。  -->
+       </p>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input onclick="closeGssjYxcjWindow()" type="button" style="width: 80px;height: 30px;background-color: #EFEFEF;margin-right: 15px;" value="下次补充" />
+                                                                                                   <input onclick="openYxcjWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;margin-left: 15px;" value="立即补充" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+<div class="mini-panel mini-window" id="DsYxcjWindow" style="border-width: 0px; padding: 0px; width: 600px; display: none; height: 150px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">消息提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: left;width:100%;">
+       <p style="font-size:16px;">      您的实名注册信息不完整，请点击下一步补充信息。
+       </p>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input onclick="openYxcjWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;" value="下一步" />
+      <!-- <a href='http://12366.cqsw.gov.cn/PortalWeb/pages/registerUser/smhsRegister.html' target='_blank' class="btn-blue">下一步</a> -->
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+<div class="mini-panel mini-window" id="DsgbWindow" style="border-width: 0px; padding: 0px; width: 400px; display: none; height: 150px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";display:none;"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: center;width:100%;">
+       <p style="font-size:16px;">未采集人像信息，不能进行业务办理！
+       </p>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input onclick="DsgbWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;margin-right: 15px;" value="确定" />
+                                                                                                   <input onclick="DsqxWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;margin-left: 15px;" value="取消" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+<div class="mini-panel mini-window mini-window-drag" id="bsrSfsqWindow" style="border-width: 0px; padding: 0px; width: 400px; display: none; height: 150px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: center;width:100%;">
+       <p style="font-size:16px;">授权信息确认，是否发送授权申请给法人？</p>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;">
+    	<input onclick="qrbind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;&#10;    &#9;margin-right: 15px;" value="确认绑定" />
+        <input onclick="jcbind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;&#10;        margin-left: 15px;" value="解除绑定" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+<div class="mini-panel mini-window" id="dsqyWindow" style="border-width: 0px; padding: 0px; width: 400px; display: none; height: 200px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: center;width:100%;">
+       <p style="font-size:16px;">当前企业绑定信息已失效，请到主管税务局机关进行企业信息变更，变更完成后再绑定该企业。<br />是否现在解除绑定关系？</p>
+    </div>
+    <input type="hidden" id="dsqy_djxh" />
+    <input type="hidden" id="dsqy_wgzbh" />
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;">
+    	<input onclick="dsqyjcbind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;&#10;    &#9;margin-right: 15px;" value="解除绑定" />
+        <input onclick="dsqywcbind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;&#10;        margin-left: 15px;" value="保持现状" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+<div class="mini-panel mini-window mini-window-drag" id="dlrsfrzWindow" style="border-width: 0px; padding: 0px; width: 400px; display: none; height: 200px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">代理人身份认证</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: center;width:100%;">
+       <p style="font-size:14px;">请选择需进行身份认证的所属服务机构：</p>
+       <br />
+       <p style="font-size:12px;">
+       	<span class="mini-buttonedit mini-combobox mini-popupedit mini-required" id="sszyfwjg" style="border-width: 0px; padding: 0px; width: 280px;"><span class="mini-buttonedit-border" style="padding-right: 2px;"><input type="input" class="mini-buttonedit-input" autocomplete="off" placeholder="请选择..." readonly="" id="sszyfwjg$text" /><span class="mini-buttonedit-buttons"><span class="mini-buttonedit-close"></span><span class="mini-buttonedit-button" onmouseover="mini.addClass(this, 'mini-buttonedit-button-hover');" onmouseout="mini.removeClass(this, 'mini-buttonedit-button-hover');"><span class="mini-buttonedit-icon"></span></span></span></span><input name="sszyfwjg" type="hidden" id="sszyfwjg$value" /></span>
+       </p>
+       <br />
+       <p>
+       	<input onclick="nextDlrsfrz()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;&#10;    &#9;margin-right: 15px;" value="确定" />
+    	<input onclick="closeDlrsfrz()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;&#10;    &#9;margin-right: 15px;" value="取消" />
+       </p>
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+<div class="mini-panel mini-window" id="xgmmTsWindow" style="border-width: 0px; padding: 0px; width: 260px; display: none; height: 150px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">消息提示</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div style="margin-top: 10px;font-family:微软雅黑;font-size:16px;font-weight:normal;text-align: center;width:100%;">
+       <p style="font-size:16px;">修改成功
+       </p>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input onclick="xgmmTsWind()" type="button" style="width: 80px;height: 30px;background-color: #00BBFF;" value="确定" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+
+<div class="mini-panel mini-window" id="xgmmWindow" style="border-width: 0px; padding: 0px; width: 430px; display: none; height: 360px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">修改密码</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";display:none;"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div id="modifyPassword">
+    <div id="modifyPasswordForm" class="modify-password-form">
+    <table>
+        <tbody><tr>
+          <td colspan="2" id="oldpassword_error" class="validation-error-text" style="color:red;"></td>  
+        </tr>
+        <tr>
+          <td width="70">
+            <label for="oldPassword">原密码</label>
+          </td>
+          <td width="330">
+            <span class="mini-textbox mini-password" id="oldPassword" style="border-width: 0px; padding: 0px; width: 260px;"><span class="mini-textbox-border"><input type="password" class="mini-textbox-input" autocomplete="off" placeholder="" id="oldPassword$text" /></span><input type="hidden" id="oldPassword$value" name="password" /></span>
+            <i>*</i>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" id="password_error" class="validation-error-text" style="color:red;"></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="password">新密码</label>
+          </td>
+          <td>
+            <span class="mini-textbox mini-password" id="password" style="border-width: 0px; padding: 0px; width: 260px;"><span class="mini-textbox-border"><input type="password" class="mini-textbox-input" autocomplete="off" placeholder="" id="password$text" /></span><input type="hidden" id="password$value" name="newPassword" /></span>
+            <i>*</i>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" id="passwordAgain_error" class="validation-error-text" style="color:red;"></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="passwordAgain">再次输入</label>
+          </td>
+          <td>
+            <span class="mini-textbox mini-password" id="passwordAgain" style="border-width: 0px; padding: 0px; width: 260px;"><span class="mini-textbox-border"><input type="password" class="mini-textbox-input" autocomplete="off" placeholder="" id="passwordAgain$text" /></span><input type="hidden" id="passwordAgain$value" /></span>
+            <i>*</i>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+    </div>  
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;"><input onclick="confirmModify()" type="button" style="width: 120px;height: 40px;background-color: #00BBFF;" value="确定" />
+    </div>
+    <div style="text-align: left;margin-left: 10px;">
+      <p>提示：第一次登录必须先修改原始密码</p>
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+<!-- 纳税人签订无纸化业务办理电子协议  start-->
+<div id="light1" class="white_content1" style="text-align: center; display: none;"> 
+    <div id="dzxy" style="font-size:10px;line-height:30px;margin-top: 20px;text-align: left;margin-right: 20px;margin-left: 20px;">
+        	<p style="font-size:18px;text-align:center;">国家税务总局重庆市税务局依申请涉税事项无纸化业务办理电子协议</p>
+			<p style="text-align:center;"><b>本协议更新于2018年6月15日</b></p>
+			<p>尊敬的纳税人：</p>
+			<p>  为进一步优化纳税服务，减少办税时间，提高办税效率，推行依申请涉税事项无纸化办理，按照《中华人民共和国税收征收管理法》、《中华人民共和国合同法》等有关法律、法规规定，我局（以下称“甲方”）开发了无纸化办税系统，并制定了《国家税务总局重庆市税务局依申请涉税事项无纸化办理电子协议》（以下简称“协议”），《协议》以电子文件形式，由纳税人（以下称“乙方”）签收确认，现就依申请涉税事项无纸化办理过程中有关报送（出具）电子资料的事项达成协议如下：</p>
+			<p>  一、甲乙双方共同确认，乙方可在甲方的“重庆市网上税务局”（下称“网上税务局”）实名注册唯一办税账户并实名验证后，使用无纸化办税系统办理依申请涉税事项。</p>
+			<p>  二、乙方承诺：妥善保管和管理登录网上税务局的账号、密码及手机验证码，并保证电子账户在乙方控制下使用，任何登录纳税人网上税务局无纸化办税账户的使用者均视为经纳税人授权的办税人员，任何在网上税务局使用无纸化办税的行为均视为经纳税人授权的行为。</p>
+			<p>  三、乙方应按甲方要求准确并规范的填报各类电子数据、附报资料和相关要素，确保其提交的各类电子数据、附报资料和相关要素准确性、真实性、完整性。对于仅需填报相关要素的附报资料，乙方应确保填写附报数据对应的纸质资料符合其申请的该项业务办理要求，免于报送的各项纸质资料由乙方自行留存备查。</p>
+			<p>  四、乙方对填报的各类电子数据、附报资料和相关要素以及留存备查资料的一致性负责。乙方未按要求提交资料，或提交的资料存在虚假的，一经发现，甲方将按相关法律、法规、规章和规范性文件规定处理。</p>
+			<p>  五、乙方填报各类电子数据、附报资料和相关要素的报送时间以信息进入税收征管信息系统时间为准。乙方认可其填报的各类电子数据、附报资料和相关要素均以税收征管信息系统接收保存的数据、资料为准。</p>
+			<p>  六、乙方填报的电子资料灭失的、无法查找或者恢复的，甲方有权要求纳税人再次提供有关资料。</p>
+			<p>  七、对于需要甲方核准、审核或审批（以下简称“审核”）的依申请涉税事项，在甲方正式核准、审核或审批前乙方可修改或撤回申请；文书申请信息提交后，经审核资料需要补正的，乙方应按照要求及时提交符合要求的各类电子数据、附报资料和相关要素；正式审核确认通过的涉税事项生效时间以无纸化系统中文书审核时间为准，纳税人不可在无纸化系统申请变更或作废。</p>
+			<p>  八、对于无需甲方审核的依申请涉税事项，乙方确认报送的，无纸化系统可以根据乙方报送的各类电子数据、附报资料和相关要素直接生成文书，涉税事项生效时间以文书时间为准。相关法律、法规、规章和规范性文件允许变更或作废的,同一笔业务乙方可在无纸化系统中申请变更或作废一次；法律、法规、规章和规范性文件不允许变更或作废的，不可在无纸化系统中申请变更或作废。</p>
+			<p>  九、本协议有效期限为长期，一经签订立即生效，如遇国家政策调整，应根据有关规定执行。</p>
+			<p>  十、双方签订协议后如有异议，均有权通过电子系统终止协议。双方可以通过电子系统申请解除本协议，自电子系统中确认终止本协议之时立即生效，但解除或终止前已生效文书法律效力不变，已报送未生效文书将自动失效。对协议有效期内产生的异议，由甲乙双方协商解决，协商不成的，甲乙双方应当向甲方所在地有管辖权的人民法院起诉。</p>
+			<br />
+			<div style="text-align: center;font-size: 12px;">
+				<input id="ty" onclick="insertYhxy('Y')" type="button" style="width: 80px;height: 30px;background-color: #3c8dbc;border: 1px;" value="同意" />  
+			    <input onclick="insertYhxy('N')" type="button" style="width: 80px;height: 30px;background-color: #EFEFEF;border: 1px;" value="不同意" />
+			</div>
+			<div style="height: 8px;line-height: 8px;"></div>
+		</div>
+    </div>   
+<!-- 定制菜单start -->
+<div class="mini-panel mini-window mini-window-drag" id="menuwindow" style="border-width: 0px; padding: 0px; width: 860px; display: none; height: 640px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">我要定制</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">
+    <div class="mini-tree mini-tree-treeLine mini-tree-showCheckBox" id="menuTree" style="display: block; border: 0px solid rgb(255, 0, 0); padding: 0px; text-align: left; width: 95%; height: 80%;"><div class="mini-tree-border mini-tree-rootnodes"><div class="mini-tree-header"></div><div class="mini-tree-body"><div id="mini-19$nodes$-1" class="mini-tree-nodes" style=""></div></div></div></div>
+      
+    <div style="text-align: center;margin-left: 10px;height: 20%">
+    	<p><span style="color:blue">提示：您定制的数量最多是8个。</span></p>
+    	<input id="btn_customMenu" onclick="saveCustomMenu()" type="button" style="width: 90px; height: 30px; margin-bottom:6px;&#10;          &#9;background-color: #22a7ff; color: white; font-size:16px; font-family: 宋体" value="保存" />
+                  
+    	<input id="btn_customMenu_reset" onclick="resetCustomMenu()" type="button" style="width: 90px; height: 30px; margin-bottom:6px;&#10;          &#9;background-color: #22a7ff; color: white; font-size:16px; font-family: 宋体" value="重置" />          	      
+      <p><span id="menuMsg" style="color:red"></span></p>
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+<!-- 人像风险提示 start-->
+<div id="fade2" class="black_overlay1" style="display: none;"></div>     
+<div id="light2" class="white_content1" style="text-align: center; display: none;"> 
+    <div id="dzxy" style="font-size:10px;line-height:30px;margin-top: 20px;text-align: left;margin-right: 20px;margin-left: 20px;">
+        	<p style="font-size:18px;text-align:center;">人脸识别实名办税风险提醒</p>
+			<!-- <p style="text-align:center;"><b>本协议更新于2018年6月15日</b></p> -->
+			<p>尊敬的纳税人：</p>
+			<p>  您正在办理人脸识别实名办税身份认证，实名认证后，你将可以通过人脸识别办理相关涉税事项，也将承担相关法律责任。为防止不法份子欺骗您进行人脸识别实名认证虚开增值税发票，现将有关风险提醒如下：</p>
+			<p>  如果您是法人代表（负责人）、财务人员或办税人员，您所登记的企业虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票的，根据发票开具金额的大小，按照《刑法》第二百零五条规定，将对直接负责的主管人员和其他直接责任人员处以三年以下有期徒刑或者拘役到十年以上有期徒刑或无期徒刑。</p>
+			<p>  您所登记的企业虚开《刑法》第二百零五条规定以外的其他发票（普通发票），情节严重的，对直接负责的主管人员和其他直接责任人员处二年以下有期徒刑、拘役或者管制；情节特别严重的，处二年以上七年以下有期徒刑。</p>
+			<p>  如果您所登记的企业开具发票后不进行纳税申报，税务机关将通知您进行申报。拒不申报的，税务机关将追缴税款、滞纳金，并处不缴或者少缴的税款50%以上5倍以下的罚款，并按规定移送司法机关追究刑事责任（《刑法》第201条规定：偷税数额占应纳税额的10%以上不满30%并且偷税数额在10000元以上不满100000元的，处3年以下有期徒刑或者拘役，并处偷税数额1倍以上5倍以下罚金；偷税数额占应纳税额的30%以上并且偷税数额在100000元以上的，处3年以上7年以下有期徒刑，并处偷税数额1倍以上5倍以下罚金）。</p>
+			<p>  同时，如果您所登记的企业涉嫌虚开发票或通知申报拒不申报涉嫌偷税的，税务机关将把您纳入社会征信黑名单。</p>
+			<p>  我已充分了解相关风险，愿意承担相关法律责任。</p>
+			<br />
+			<div style="text-align: center;font-size: 12px;">
+				<input id="ty2" onclick="updateRxfxbz('Y')" type="button" style="width: 80px;height: 30px;background-color: #3c8dbc;border: 1px;" value="同意" />  
+			    <input onclick="logout();" type="button" style="width: 80px;height: 30px;background-color: #EFEFEF;border: 1px;" value="不同意" />
+			</div>
+			<div style="height: 8px;line-height: 8px;"></div>
+		</div>
+</div>
+<!-- 人像风险提示 end--> 
+<!-- 定制菜单end -->     
+<div id="fade1" class="black_overlay1" style="display: none;"> 
+</div>
+<div id="zxzx-btn" class="zxzx-btn" style="display: block;"><a href="javascript:lxkf();" id="lxkf"><img src="/PortalWeb/images/zxzx_btn.gif" alt="" /></a></div>
+<div id="kfWindows">
+    <div style="width:100%;height:100%;position:relation;padding-top:25px;background-color:rgb(44,173,255);border:1px #b3b3b3 solid;">
+    <div style="position:absolute;top:2px;right:5px;cursor:pointer;user-select:none;background-color:rgb(44,173,255);color:white;" onclick="$('#kfWindows').css('display','none');">X</div>
+    	<iframe name="frameContent" id="iframe1" frameborder="0" width="100%"></iframe>
+    </div>
+</div>
+<!-- end -->
+<!-- 不容登录通知 -->
+<div class="mini-panel mini-window" id="loginNoticeWindow" style="border-width: 0px; padding: 0px; width: 800px; display: none; height: 360px;"><div class="mini-panel-border"><div class="mini-panel-header"><div class="mini-panel-header-inner"><span class="mini-panel-icon " style="display: none;"></span><div class="mini-panel-title">系统通知</div><div class="mini-tools"><span id="3" class="mini-tools-collapse " style=";display:none;"></span><span id="2" class="mini-tools-min " style=";display:none;"></span><span id="1" class="mini-tools-max " style=";display:none;"></span><span id="0" class="mini-tools-close " style=";display:none;"></span></div></div></div><div class="mini-panel-viewport"><div class="mini-panel-toolbar" style="display: none;"></div><div class="mini-panel-body">  
+    <div style="margin-bottom: 20px;margin-top: 20px;width: 100%;text-align: center;float: right;">
+    		<p style="font-size:16px;text-align:left">尊敬的纳税人：</p>
+    		<p style="font-size:16px;text-align:left">
+		  	      
+		  	为向您提供更优质便捷的服务，网上税务局将于<font color="red">2018年9月30日18:00至10月8日9:00</font>进行系统维护，维护期间暂停服务。由此带来的不便敬请谅解，祝您国庆快乐！</p>
+		    <p style="font-size:16px;text-align:right">
+		  	国家税务总局重庆市税务局
+		  	<br />
+		  	2018年9月30日
+		  	       
+		    </p>
+    		<input onclick="logout();" type="button" style="width:120px; height:40px; margin-top:100px;background-color: #00BBFF;" value="确定" />
+    </div>
+</div><div class="mini-panel-footer" style="display: none;"></div><div class="mini-resizer-trigger"></div></div></div></div>
+<!-- 通知结束 -->
+<script src="/PortalWeb/lib/base/jquery.min.js"></script>
+<script src="/PortalWeb/lib/sui/mini-all-min.js"></script>
+<script src="/PortalWeb/scripts/pagejs/global/common.js"></script>
+<script src="/PortalWeb/scripts/commonjs/loading.js"></script>
+<script src="/PortalWeb/lib/base/template.js"></script>
+<script src="/PortalWeb/scripts/index/index.js"></script>
+<script src="/PortalWeb/scripts/commonjs/validate.js"></script>
+<script src="/PortalWeb/scripts/commonjs/jsencrypt.js"></script>
+<script src="/PortalWeb/scripts/pagejs/indexFramework/init.js"></script><span class="lengthspan" id="lengthspan"></span><div class="mini-buttonedittip" id="mini-buttonedittip" style="display: none;"><div class="mini-buttonedittip-colortip"><div class="mini-buttonedittip-content"></div><div class="mini-buttonedittip-pointy"><span class="mini-buttonedittip-pointytipshadow"></span><span class="mini-buttonedittip-pointytip"></span></div></div></div>
+<script src="/PortalWeb/scripts/layer/layer.js"></script>
+<script type="text/javascript">
+	//浏览器版本
+	function hidezxzx(){
+		if(navigator.appName == "Microsoft Internet Explorer" 
+		&amp;&amp; navigator.appVersion.split(";")[1].replace(/[ ]/g,"")=="MSIE6.0" 
+			|| navigator.appName == "Microsoft Internet Explorer" 
+				&amp;&amp; navigator.appVersion.split(";")[1].replace(/[ ]/g,"")=="MSIE7.0" 
+					|| navigator.appName == "Microsoft Internet Explorer" 
+						&amp;&amp; navigator.appVersion.split(";")[1].replace(/[ ]/g,"")=="MSIE8.0" 
+							|| navigator.appName == "Microsoft Internet Explorer" 
+								&amp;&amp; navigator.appVersion.split(";")[1].replace(/[ ]/g,"")=="MSIE9.0"){
+			document.getElementById("zxzx-btn").style.display = "none";
+		}else{
+			document.getElementById("zxzx-btn").style.display = "block";
+			document.getElementById('iframe1').contentWindow.location.reload(true);
+		}
+	}
+	hidezxzx();
+    // 人工咨询
+    function lxkf() {
+          $('#kfWindows').css('display', 'inline');
+          $('#iframe1').attr('src', "https://bot-pre.dingtax.cn/bot/home?auth_vendor=web&amp;appId=500000&amp;campaignId=cqyj");
+    };
+    if (null != document.getElementById("check1") &amp;&amp; undefined != document.getElementById("check1")){
+    	document.getElementById("check1").checked = false;
+    }
+    function onBeforeNodeCheck(e) {
+        var tree = e.sender;
+        var node = e.node;
+        if (tree.hasChildren(node)) {
+        	// 只允许勾选叶子节点
+            e.cancel = true;
+        }
+    }
+    
+    //判断当前时间是否在系统升级时间段内
+	function contrastTime() {
+		var d = new Date();
+		var str = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();//获取当前实际日期
+		if (Date.parse(str) &gt;= Date.parse("2018-9-30 18:00:00") &amp;&amp; Date.parse(str) &lt;= Date.parse("2018-10-8 9:00:00")) {//时间戳对比
+		       return true;
+		} 
+		return false;
+	}
+	if (contrastTime()){
+		mini.get("loginNoticeWindow").show();
+	} else {
+		mini.get("loginNoticeWindow").hide();
+	}
+</script><div class="mini-modal mini-fixed" style="display:none"></div>
+
+<div class="mini-modal mini-fixed" style="display: none; z-index: 999;"></div></body></html>
